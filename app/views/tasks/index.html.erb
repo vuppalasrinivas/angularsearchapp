@@ -1,0 +1,67 @@
+<!--
+<p id="notice"><%= notice %></p>
+
+<%= form_tag tasks_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<h1>Listing Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Priority</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.priority %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>
+
+-->
+
+
+    
+    <table>
+        <tr>
+            <td align="right">Search :</td>
+            <td><input ng-model="query[queryBy]" /></td>
+        </tr>         
+        
+    </table>
+    <hr>
+    <div>
+        <table>
+            <tr>
+                <th>id</th>                
+                <th>Task Name</th>                
+                <th>Priority</th>                
+            </tr>
+            <tr ng-repeat="emp in employees | filter:query">
+                <td>{{emp.id}}</td>
+                <td>{{emp.name}}</td>                
+                <td>{{emp.priority}}</td>
+                <td><%=link_to 'Show', URI::unescape(tasks_path('{{emp.id}}'))%></td>        
+            </tr>
+        </table>
+    </div>
+  
+
